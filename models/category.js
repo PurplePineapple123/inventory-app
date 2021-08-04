@@ -4,8 +4,15 @@ var Schema = mongoose.Schema;
 
 var CategorySchema = new Schema(
   {
-    name: { type: String, required: true, minLength: 3, maxLength: 100 }
+    name: { type: String, required: true, minLength: 3, maxLength: 100 },
+    description: { type: String, required: true },
   }
 );
+
+CategorySchema
+.virtual('url')
+.get(function () {
+  return '/catalog/category/' + this._id;
+});
 
 module.exports = mongoose.model('Category', CategorySchema);
