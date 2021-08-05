@@ -8,15 +8,15 @@ var PartSchema = new Schema(
     price: { type: String, required: true },
     inventory: { type: Number, required: true },
     features: { type: String, required: true },
-    mfg: {type: Schema.Types.ObjectId, ref: 'Mfg'},
-    category: {type: Schema.Types.ObjectId, ref: 'Category'}
+    mfg: { type: Schema.Types.ObjectId, ref: 'Mfg', required: true },
+    category: { type: Schema.Types.ObjectId, ref: 'Category', required: true },
   }
 );
 
 PartSchema
 .virtual('url')
 .get(function () {
-  return '/catalog/part/' + this._id;
+  return '/part/' + this._id;
 });
 
 module.exports = mongoose.model('Part', PartSchema);

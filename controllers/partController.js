@@ -4,7 +4,9 @@ var Part = require('../models/part');
 var async = require('async');
 
 exports.index = function(req, res) {
-  res.send('NOT IMPLEMENTED: Part index');
+
+  async.parallel()
+  res.render('index', {title: 'Home Page'});
 };
 
 exports.part_update_get = function(req, res) {

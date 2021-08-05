@@ -12,7 +12,7 @@ var MfgSchema = new Schema(
 MfgSchema
 .virtual('url')
 .get(function () {
-  return '/catalog/mfg/' + this._id;
+  return '/mfg/' + this._id;
 });
 
 module.exports = mongoose.model('Mfg', MfgSchema);

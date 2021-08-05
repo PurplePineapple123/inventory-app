@@ -12,8 +12,8 @@ if (!userArgs[0].startsWith('mongodb')) {
 */
 var async = require('async')
 var Part = require('./models/part')
-var Mfg = require('./models/Mfg')
-var Category = require('./models/Category')
+var Mfg = require('./models/mfg')
+var Category = require('./models/category')
 
 var mongoose = require('mongoose');
 var mongoDB = userArgs[0];
@@ -54,13 +54,13 @@ function categoryCreate(name, description, cb) {
   }
   //if (genre != false) bookdetail.genre = genre
     
-  var category = new Mfg(mcategorydetail);    
+  var category = new Category(categorydetail);    
   category.save(function (err) {
     if (err) {
       cb(err, null)
       return
     }
-    console.log('New Mfg: ' + category);
+    console.log('New Category: ' + category);
     categories.push(category)
     cb(null, category)
   }  );

@@ -2,4 +2,22 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Welcome to #[em Inventory App]
+
+  h1 Dynamic content 
+
+  if error
+    p Error getting dynamic content.
+  else
+    p The library has the following record counts:
+      each part in part_list
+        li
+          a(href=part.url) #{part.name}
+          |  by #{part.mfg.name} - #{part.price} 
+
+
+    
+    //- p #[strong MFG: ]
+    //-   a(href=part.mfg.url) #{part.name}
+    //-   //li #[strong Part:] !{part.name}
+      
