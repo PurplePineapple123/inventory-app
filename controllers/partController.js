@@ -3,19 +3,20 @@ var Part = require('../models/part');
 //const { body, validationResult } = require('express-validator');
 var async = require('async');
 
-exports.index = function(req, res) {
-
-  async.parallel()
-  res.render('index', {title: 'Home Page'});
-};
-
-exports.part_update_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: Part update GET');
-};
 
 // Display list of all Part.
 exports.part_list = function(req, res) {
-    res.send('NOT IMPLEMENTED: Part list');
+  Part.find()
+    .sort('name')
+    .populate('mfg')
+    .exec(function (err, results){
+      if (err) { return next(err) };
+
+      res.render('part_list', {title: 'Part List', part_list: results});
+
+    });
+  
+  
 };
 
 // Display detail page for a specific Part.

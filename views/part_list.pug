@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+
+  ul
+    - part_list.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+    each part in part_list
+      li
+        a(href=part.url) #{part.name}
+        |  (#{part.mfg.name})
+
+    else
+      li There are no books.
